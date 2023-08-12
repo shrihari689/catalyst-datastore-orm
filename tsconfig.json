@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "commonjs",
+    "declaration": true,
+    "target": "es5",
+    "lib": ["es6", "es5", "es2015.promise", "es2015.iterable"],
+    "strict": true,
+    "checkJs": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true
+  },
+  "include": ["lib"],
+  "exclude": ["node_modules", "dist"]
+}
