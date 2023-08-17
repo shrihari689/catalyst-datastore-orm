@@ -1,5 +1,8 @@
 import Column from "./Column";
 
+// Type definition of a model
+export type Model<T> = new () => T;
+
 /**
  * Configuration options for a ModelSchema.
  */
@@ -18,9 +21,9 @@ interface SchemaConfig<T> {
 
   /**
    * The model class constructor that takes a row of data as input and returns an instance of T.
-   * @type {new (row: any) => T}
+   * @type {Model<T>}
    */
-  model: new (row: any) => T;
+  model: Model<T>;
 }
 
 export default SchemaConfig;
