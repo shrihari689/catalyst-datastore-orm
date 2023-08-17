@@ -1,11 +1,11 @@
-import { EntityNotFoundError } from "../Extras/Errors";
+import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
+import { Query } from "../Query/Query";
 import Column from "./Column";
-import SchemaConfig from "./SchemaConfig";
+import SchemaConfig, { Model } from "./SchemaConfig";
 
 /**
  * Represents a model schema for a datastore table.
  * @param {SchemaConfig<T>} config - The configuration object for the Schema.
- *
  * @example
  * ```js
  * const User = new Schema({
@@ -19,74 +19,90 @@ import SchemaConfig from "./SchemaConfig";
  */
 export class Schema<T> {
   /** This holds the table name of the model. */
-  private _tableName: string;
+  #tableName: string;
 
   /** This holds the columns of the model. */
-  private _columns: Column[];
+  #columns: Column[];
 
   /** This holds a row with the default value pre-filled. */
-  private _defaultRow: { [key: string]: any };
+  #row: Record<string, any> = {};
 
   /** This holds the class reference of the model. */
-  private _model: new (row: any) => T;
+  #model: Model<T>;
+
+  /** This holds the cached reference of columns and their column names. */
+  #attributes: Record<string, Column> = {};
+
+  /** This holds the cached reference of columns and their properties. */
+  #properties: Record<string, Column> = {};
 
   constructor(config: SchemaConfig<T>) {
     // Assign default configurations
-    this._tableName = config.tableName;
-    this._columns = config.columns;
-    this._model = config.model;
+    this.#tableName = config.tableName;
+    this.#columns = config.columns;
+    this.#model = config.model;
 
-    // Cache default values for .new()
-    this._defaultRow = {};
-    for (const column of this._columns) {
-      this._defaultRow[column.name] = column.defaultValue;
+    for (const column of this.#columns) {
+      // Cache default values for new row.
+      if (column.defaultValue !== undefined) {
+        this.#row[column.property] = column.defaultValue;
+      }
+
+      // Cache column name vs property mapping.
+      this.#attributes[column.name] = column;
+      this.#properties[column.property] = column;
     }
   }
 
   /**
-   * Retrieve a list of data items from the associated datastore table.
-   * By default, first 100 items will be returned.
+   * Returns table name of the model as in datastore.
    *
    * @example
    * ```js
-   * const users = await User.listAll();
+   * console.log(User.table) // Users
    * ```
-   * @param {number} [limit] - An optional parameter to limit the number of items returned.
-   * @returns {T[]} An array of data items representing records in the datastore table.
+   *
+   * @returns {string} The name of the table.
    */
-  async listAll(limit: number = 100): Promise<T[]> {
-    /* TODO: Implement the method */
-    return [];
+  get table(): string {
+    return this.#tableName;
   }
 
   /**
-   * Find a data item by its ROWID in the specified table.
+   * Instantiates the model with the Catalyst app that can be used to query.
    *
    * @example
    * ```js
-   * try {
-   *    const user = await User.findById(17512000000066001);
-   *    console.log(user.name);
-   * } catch (e) {
-   *    if (e instanceof EntityNotFoundError) {
-   *      console.log("User not found!")
-   *    }
-   * }
+   * const app = catalyst.initialApp()
+   * const user = await User.app(app).findById(2);
+   * console.log(user.name)
    * ```
    *
-   * @param {number|string} id - The ID of the entity to find.
-   * @throws {EntityNotFoundError} Throws an error if the entity is not found.
+   * @param app {CatalystApp}
+   * @returns {Query<T>}
    */
-  async findById(id: number | string): Promise<T> {
-    /* TODO: Implement the method */
-    const row = new this._model({});
-    if (row === null) {
-      throw new EntityNotFoundError();
+  app(app: CatalystApp): Query<T> {
+    return new Query<T>({ attributes: this.#attributes, schema: this, app: app, properties: this.#properties });
+  }
+
+  /**
+   * Creates a new instance of the given model in the schema config.
+   *
+   * This will also assign default values in the instance.
+   *
+   * @example
+   * ```js
+   * const user = User.new();
+   * console.log(user.confirmed) // false
+   * ```
+   *
+   * @returns {T}
+   */
+  new(): T {
+    const row = new this.#model();
+    for (const key in this.#row) {
+      (row as Record<string, any>)[key] = this.#row[key];
     }
     return row;
-  }
-
-  new(): T {
-    return new this._model(this._defaultRow);
   }
 }
