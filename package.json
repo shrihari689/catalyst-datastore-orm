@@ -25,8 +25,10 @@
   },
   "homepage": "https://github.com/shrihari689/catalyst-datastore-orm#readme",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.22.10",
     "@types/node": "^20.4.5",
     "@types/validator": "^13.7.17",
+    "eslint": "^8.47.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {

@@ -3,13 +3,14 @@
     "outDir": "./dist",
     "module": "commonjs",
     "declaration": true,
-    "target": "es5",
+    "target": "es2015",
     "lib": ["es6", "es5", "es2015.promise", "es2015.iterable"],
     "strict": true,
     "checkJs": true,
+    "esModuleInterop": true,
     "noImplicitReturns": true,
     "noImplicitAny": true
   },
-  "include": ["lib"],
+  "include": ["lib", "tests/**.ts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,9 +1,4 @@
 {
-  "useEslintrc": false,
-  "parserOptions": {
-    "ecmaVersion": 2017
-  },
-  "env": {
-    "es6": true
-  }
+  "useEslintrc": true,
+  "parser": "@babel/eslint-parser"
 }
