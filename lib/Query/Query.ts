@@ -119,6 +119,12 @@ export class Query<T> {
    * Specifies a limit on the number of items to retrieve and an optional offset.
    * By default, the offset value will be 0.
    *
+   * @example
+   * ```js
+   * const users = await User.app(app).limit(5).get();
+   * console.log(users);
+   * ```
+   *
    * @param {number} limit - The maximum number of items to retrieve.
    * @param {number} [offset=0] - The starting offset for retrieving items.
    * @returns {Limit<T>} A query object for further operations.

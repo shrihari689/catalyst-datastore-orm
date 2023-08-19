@@ -25,10 +25,10 @@ interface Column {
   defaultValue?: any;
 
   /**
-   * Indicates if searching is enabled for this column.
-   * @type {boolean}
+   * The value will be assigned to this property in the model.
+   * @type {string}
    */
-  isSearchEnabled?: boolean;
+  property: string;
 
   /**
    * An array of validator functions to validate the column values.

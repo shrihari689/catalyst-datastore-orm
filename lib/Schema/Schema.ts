@@ -14,7 +14,8 @@ import SchemaConfig, { Model } from "./SchemaConfig";
  *    columns: columns,
  *    validators: validators
  * });
- * const user = await User.find(1);
+ * const user = User.new();
+ * await User.app(app).create(user);
  * ```
  */
 export class Schema<T> {
