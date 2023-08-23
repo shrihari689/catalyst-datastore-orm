@@ -1,11 +1,11 @@
-import DataType from "./DataType";
-import ValidatorFunction from "../Validator/ValidatorFunction";
+import { DataType } from "@Schema/datatype";
+import { ValidatorFunction } from "@Types/Validator";
 
 /**
  * Represents a column in a data table.
  * @interface Column
  */
-interface Column {
+export interface Column {
   /**
    * The name of the column.
    * @type {string}
@@ -36,5 +36,3 @@ interface Column {
    */
   validators?: ValidatorFunction[];
 }
-
-export default Column;

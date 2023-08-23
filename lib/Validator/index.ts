@@ -1,5 +1,5 @@
 import validator from "validator";
-import ValidatorFunction from "./ValidatorFunction";
+import { ValidatorFunction } from "@Types/Validator";
 
 const isRequired: ValidatorFunction = (value: any) => {
   if (value == undefined || value == null) {
@@ -49,7 +49,7 @@ const isValidMaxLength: (digits: number) => ValidatorFunction = (length: number)
  * const validations = [ Validators.MAX_LENGTH(255) ]
  * ```
  */
-export const Validators = Object.freeze({
+export const Validators: Record<string, Function> = Object.freeze({
   /**
    * Validator function to check if a value is required (not null, undefined, or empty).
    *

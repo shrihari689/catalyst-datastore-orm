@@ -1,4 +1,14 @@
-import { Condition } from "./Where";
+import { Condition } from "@Keyword/Condition";
+
+/**
+ * Represents various comparison operators for conditions.
+ */
+export type Comparator = "=" | "!=" | ">" | "<" | "<=" | ">=" | "<>";
+
+/**
+ * Represents logical operators for combining conditions.
+ */
+export type Operator = "AND" | "OR";
 
 /**
  * Represents a keyword-based configuration for querying data.

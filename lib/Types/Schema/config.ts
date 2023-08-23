@@ -1,4 +1,4 @@
-import Column from "./Column";
+import { Column } from "@Types/Schema";
 
 // Type definition of a model
 export type Model<T> = new () => T;
@@ -6,7 +6,7 @@ export type Model<T> = new () => T;
 /**
  * Configuration options for a ModelSchema.
  */
-interface SchemaConfig<T> {
+export interface SchemaConfig<T> {
   /**
    * The table name of the model in the datastore.
    * @type {string}
@@ -25,5 +25,3 @@ interface SchemaConfig<T> {
    */
   model: Model<T>;
 }
-
-export default SchemaConfig;

@@ -1,8 +1,11 @@
-import Limit from "../Keyword/Limit";
-import OrderBy from "../Keyword/OrderBy";
-import Select from "../Keyword/Select";
-import Where, { Comparator, Condition } from "../Keyword/Where";
-import QueryConfig from "./QueryConfig";
+import Limit from "@Keyword/Limit";
+import OrderBy from "@Keyword/OrderBy";
+import Select from "@Keyword/Select";
+import Where from "@Keyword/Where";
+import { Condition } from "@Keyword";
+import { QueryConfig } from "@Types/Query";
+import { Comparator } from "@Types/Keyword";
+import DatabaseService from "@Service/database";
 
 /**
  * Represents a Data Access layer which encapsulates the Catalyst app.
@@ -135,5 +138,27 @@ export class Query<T> {
       limit: { limit, offset },
     } as const;
     return new Limit(this.#config, query);
+  }
+
+  /**
+   * Find a record by its ID in the specified table.
+   *
+   * @example
+   * ```js
+   * try {
+   *    const user = await User.app(app).findById(17512000000066001);
+   *    console.log(user.name);
+   * } catch (e) {
+   *    if (e instanceof EntityNotFoundError) {
+   *      console.log("User not found!")
+   *    }
+   * }
+   * ```
+   *
+   * @param {number|string} id The unique identifier of the record to find.
+   * @throws {EntityNotFoundError} Throws an error if the entity is not found.
+   */
+  async findById(id: number | string): Promise<T> {
+    return new DatabaseService(this.#config).findById(id);
   }
 }

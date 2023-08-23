@@ -1,7 +1,6 @@
 import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
-import { Query } from "../Query/Query";
-import Column from "./Column";
-import SchemaConfig, { Model } from "./SchemaConfig";
+import { Query } from "@Query";
+import { Column, Model, SchemaConfig } from "@Types/Schema";
 
 /**
  * Represents a model schema for a datastore table.

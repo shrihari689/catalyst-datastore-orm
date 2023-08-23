@@ -1,8 +1,10 @@
-import QueryConfig from "../Query/QueryConfig";
-import Keyword from "./Keyword";
+import { QueryConfig } from "@Types/Query";
+import Keyword, { Comparator } from "@Types/Keyword";
+import { Condition } from "@Keyword";
+import Where from "./Where";
 import Limit from "./Limit";
 import OrderBy from "./OrderBy";
-import Where, { Comparator, Condition } from "./Where";
+import DatabaseService from "@Service/database";
 
 /**
  * Represents a query builder for selecting specific columns from the data.
@@ -94,7 +96,8 @@ export default class Select<T> {
   }
 
   /**
-   * Sorts data based on a specified field and order. By default, the sorting order will be ascending.
+   * Sorts data based on a specified field and order.
+   * By default, the sorting order will be ascending.
    *
    * @example
    * ```js
@@ -124,7 +127,6 @@ export default class Select<T> {
    * ```
    */
   async get(): Promise<T[]> {
-    // TODO: Implement the database service.
-    return [];
+    return new DatabaseService(this.#config).get(this.#query);
   }
 }

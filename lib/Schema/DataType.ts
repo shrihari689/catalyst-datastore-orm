@@ -68,5 +68,3 @@ export enum DataType {
    */
   ENCRYPTEDTEXT = "Encrypted text",
 }
-
-export default DataType;
