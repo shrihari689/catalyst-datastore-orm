@@ -1,4 +1,4 @@
-import { Comparator, Operator } from "@Types/Keyword";
+import { Comparator, Operator } from "lib/Types/Keyword";
 
 /**
  * Represents a condition used for filtering data based on field, comparator, and value.
@@ -11,7 +11,7 @@ import { Comparator, Operator } from "@Types/Keyword";
  * await User.app(app).filter(condition).delete();
  * ```
  */
-export class Condition {
+export default class Condition {
   left: Condition | string;
   operator: Comparator | Operator;
   right: Condition | any;

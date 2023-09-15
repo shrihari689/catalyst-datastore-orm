@@ -1,11 +1,11 @@
 import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
-import { Schema } from "@Schema";
-import { Column } from "@Types/Schema";
+import { Schema } from "lib/Schema";
+import { Column } from "lib/Types/Schema";
 
 /**
  * Configuration options for querying data.
  */
-export interface QueryConfig<T> {
+export default interface QueryConfig<T> {
   /**
    * The schema associated with the data being queried.
    */

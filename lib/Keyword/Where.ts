@@ -1,9 +1,9 @@
-import Keyword, { Comparator } from "@Types/Keyword";
-import { QueryConfig } from "@Types/Query";
-import { Condition } from "./Condition";
-import OrderBy from "./OrderBy";
-import Limit from "./Limit";
-import DatabaseService from "@Service/database";
+import Keyword, { Comparator } from "lib/Types/Keyword";
+import QueryConfig from "lib/Types/Query";
+import Limit from "lib/Keyword/Limit";
+import OrderBy from "lib/Keyword/OrderBy";
+import Condition from "lib/Keyword/Condition";
+import DatabaseService from "lib/Service/database";
 
 /**
  * Represents a 'Where' clause used in a query to filter data based on conditions.
@@ -106,6 +106,20 @@ export default class Where<T> {
    * ```
    */
   async get(): Promise<T[]> {
+    return new DatabaseService(this.#config).get(this.#query);
+  }
+
+  /**
+   * Retrieves data based on the configured query and returns an array of results.
+   *
+   * @example
+   * ```js
+   * const payload = { edition: "Free" };
+   * const users = await User.app(app).where("edition", "=", "Paid").update(payload);
+   * console.log(users[0].id)
+   * ```
+   */
+  async update(): Promise<T[]> {
     return new DatabaseService(this.#config).get(this.#query);
   }
 }

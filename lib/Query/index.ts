@@ -1,11 +1,11 @@
-import Limit from "@Keyword/Limit";
-import OrderBy from "@Keyword/OrderBy";
-import Select from "@Keyword/Select";
-import Where from "@Keyword/Where";
-import { Condition } from "@Keyword";
-import { QueryConfig } from "@Types/Query";
-import { Comparator } from "@Types/Keyword";
-import DatabaseService from "@Service/database";
+import QueryConfig from "lib/Types/Query";
+import { Comparator } from "lib/Types/Keyword";
+import Limit from "lib/Keyword/Limit";
+import OrderBy from "lib/Keyword/OrderBy";
+import Select from "lib/Keyword/Select";
+import Where from "lib/Keyword/Where";
+import Condition from "lib/Keyword/Condition";
+import DatabaseService from "lib/Service/database";
 
 /**
  * Represents a Data Access layer which encapsulates the Catalyst app.

@@ -1,6 +1,6 @@
-import DatabaseService from "@Service/database";
-import Keyword from "@Types/Keyword";
-import { QueryConfig } from "@Types/Query";
+import QueryConfig from "lib/Types/Query";
+import Keyword from "lib/Types/Keyword";
+import DatabaseService from "lib/Service/database";
 
 export default class Limit<T> {
   #config: QueryConfig<T>;

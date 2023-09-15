@@ -1,4 +1,4 @@
-import { Condition } from "@Keyword/Condition";
+import Condition from "lib/Keyword/Condition";
 
 /**
  * Represents various comparison operators for conditions.

@@ -1,5 +1,5 @@
 import validator from "validator";
-import { ValidatorFunction } from "@Types/Validator";
+import { BuiltInValidators, ValidatorFunction } from "lib/Types/Validators";
 
 const isRequired: ValidatorFunction = (value: any) => {
   if (value == undefined || value == null) {
@@ -49,30 +49,8 @@ const isValidMaxLength: (digits: number) => ValidatorFunction = (length: number)
  * const validations = [ Validators.MAX_LENGTH(255) ]
  * ```
  */
-export const Validators: Record<string, Function> = Object.freeze({
-  /**
-   * Validator function to check if a value is required (not null, undefined, or empty).
-   *
-   * @throws {Error} Throws an error if the value is null, undefined, or an empty string.
-   */
+export const Validators: BuiltInValidators = {
   REQUIRED: isRequired,
-
-  /**
-   * Validator function to check if a value's length does not exceed the specified maximum length.
-   *
-   * @param {number} length - The maximum allowed length for the value.
-   * @throws {ValidationError} if the value is not a string.
-   * @throws {ValidationError} if the string exceeds maximum allowed length.
-   */
   MAX_LENGTH: (length: number) => isValidMaxLength(length),
-
-  /**
-   * Validator function to check if a numeric value's decimal digits do not exceed the specified maximum digits.
-   *
-   * @param {number} digits - The maximum allowed decimal digits for the numeric value.
-   * @throws {ValidationError} if the value is neither number or string.
-   * @throws {ValidationError} if the value is not a valid number.
-   * @throws {ValidationError} if the number exceeds maximum decimal digits.
-   */
   MAX_DECIMAL_DIGITS: (digits: number) => isValidMaxDigits(digits),
-});
+};
