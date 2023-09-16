@@ -1,4 +1,4 @@
-import { Comparator, Operator } from "lib/Types/Keyword";
+import { Comparator, Operator } from "../Types/Keyword";
 
 /**
  * Represents a condition used for filtering data based on field, comparator, and value.

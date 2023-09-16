@@ -1,5 +1,5 @@
-import { DataType } from "lib/Schema";
-import { ValidatorFunction } from "lib/Types/Validators";
+import { DataType } from "../../Schema";
+import { ValidatorFunction } from "../../Types/Validators";
 
 /**
  * Represents a column in a data table.

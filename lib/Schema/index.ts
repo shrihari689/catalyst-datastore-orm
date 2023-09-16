@@ -1,8 +1,8 @@
-import { Column, Model, SchemaConfig } from "lib/Types/Schema";
 import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
-import { Query } from "lib/Query";
-import { DEFAULT_COLUMNS } from "lib/Constants";
-import { SchemaValidator } from "lib/Validators/schema";
+import { Column, Model, SchemaConfig } from "../Types/Schema";
+import { Query } from "../Query";
+import { DEFAULT_COLUMNS } from "../Constants";
+import { SchemaValidator } from "../Validators/schema";
 
 /**
  * Represents a model schema for a datastore table.

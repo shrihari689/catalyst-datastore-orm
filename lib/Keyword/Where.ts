@@ -1,9 +1,9 @@
-import Keyword, { Comparator } from "lib/Types/Keyword";
-import QueryConfig from "lib/Types/Query";
-import Limit from "lib/Keyword/Limit";
-import OrderBy from "lib/Keyword/OrderBy";
-import Condition from "lib/Keyword/Condition";
-import DatabaseService from "lib/Service/database";
+import Keyword, { Comparator } from "../Types/Keyword";
+import QueryConfig from "../Types/Query";
+import Limit from "../Keyword/Limit";
+import OrderBy from "../Keyword/OrderBy";
+import Condition from "../Keyword/Condition";
+import DatabaseService from "../Service/database";
 
 /**
  * Represents a 'Where' clause used in a query to filter data based on conditions.

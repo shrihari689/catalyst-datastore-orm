@@ -1,5 +1,4 @@
-import { SchemaConfig } from "lib/Types/Schema";
-import { Validators } from ".";
+import { SchemaConfig } from "../Types/Schema";
 
 export class SchemaValidator {
   static validate<T>(config: SchemaConfig<T>) {

@@ -1,5 +1,5 @@
 import validator from "validator";
-import { BuiltInValidators, ValidatorFunction } from "lib/Types/Validators";
+import { BuiltInValidators, ValidatorFunction } from "..//Types/Validators";
 
 const isRequired: ValidatorFunction = (value: any) => {
   if (value == undefined || value == null) {

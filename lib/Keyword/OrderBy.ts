@@ -1,6 +1,6 @@
-import QueryConfig from "lib/Types/Query";
-import Keyword from "lib/Types/Keyword";
-import Limit from "lib/Keyword/Limit";
+import QueryConfig from "../Types/Query";
+import Keyword from "../Types/Keyword";
+import Limit from "../Keyword/Limit";
 
 export default class OrderBy<T> {
   #config: QueryConfig<T>;

@@ -1,4 +1,4 @@
-import { Column } from "lib/Types/Schema";
+import { Column } from "../../Types/Schema";
 
 // Type definition of a model
 export type Model<T> = new () => T;

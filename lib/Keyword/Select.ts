@@ -1,10 +1,10 @@
-import Keyword, { Comparator } from "lib/Types/Keyword";
-import QueryConfig from "lib/Types/Query";
-import Condition from "lib/Keyword/Condition";
-import Where from "lib/Keyword/Where";
-import Limit from "lib/Keyword/Limit";
-import OrderBy from "lib/Keyword/OrderBy";
-import DatabaseService from "lib/Service/database";
+import Keyword, { Comparator } from "../Types/Keyword";
+import QueryConfig from "../Types/Query";
+import Condition from "../Keyword/Condition";
+import Where from "../Keyword/Where";
+import Limit from "../Keyword/Limit";
+import OrderBy from "../Keyword/OrderBy";
+import DatabaseService from "../Service/database";
 
 /**
  * Represents a query builder for selecting specific columns from the data.

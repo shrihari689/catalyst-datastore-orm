@@ -1,6 +1,6 @@
 import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
-import { Schema } from "lib/Schema";
-import { Column } from "lib/Types/Schema";
+import { Schema } from "../../Schema";
+import { Column } from "../../Types/Schema";
 
 /**
  * Configuration options for querying data.

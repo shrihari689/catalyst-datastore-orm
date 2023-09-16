@@ -1,5 +1,5 @@
-import { DataType } from "lib/Schema";
-import { Column } from "lib/Types/Schema";
+import { DataType } from "../Schema";
+import { Column } from "../Types/Schema";
 
 export const DEFAULT_COLUMNS: Column[] = [
   { dataType: DataType.BIGINT, name: "ROWID", property: "id" },

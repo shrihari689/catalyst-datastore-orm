@@ -1,7 +1,7 @@
 import squel, { Expression } from "squel";
-import Keyword from "lib/Types/Keyword";
-import QueryConfig from "lib/Types/Query";
-import Condition from "lib/Keyword/Condition";
+import Keyword from "../Types/Keyword";
+import QueryConfig from "../Types/Query";
+import Condition from "../Keyword/Condition";
 
 export default class DatabaseService<T> {
   #config: QueryConfig<T>;
