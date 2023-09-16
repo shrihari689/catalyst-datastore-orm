@@ -11,7 +11,7 @@ export interface SchemaConfig<T> {
    * The table name of the model in the datastore.
    * @type {string}
    */
-  tableName: string;
+  table: string;
 
   /**
    * The columns in the table with their metadata.

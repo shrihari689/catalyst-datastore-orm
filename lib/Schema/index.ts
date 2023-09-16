@@ -1,6 +1,8 @@
 import { Column, Model, SchemaConfig } from "lib/Types/Schema";
 import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
 import { Query } from "lib/Query";
+import { DEFAULT_COLUMNS } from "lib/Constants";
+import { SchemaValidator } from "lib/Validators/schema";
 
 /**
  * Represents a model schema for a datastore table.
@@ -19,7 +21,7 @@ import { Query } from "lib/Query";
  */
 export class Schema<T> {
   /** This holds the table name of the model. */
-  #tableName: string;
+  #table: string;
 
   /** This holds the columns of the model. */
   #columns: Column[];
@@ -37,9 +39,12 @@ export class Schema<T> {
   #properties: Record<string, Column> = {};
 
   constructor(config: SchemaConfig<T>) {
-    // Assign default configurations
-    this.#tableName = config.tableName;
-    this.#columns = config.columns;
+    // Validate configurations.
+    SchemaValidator.validate(config);
+
+    // Assign default configurations.
+    this.#table = config.table;
+    this.#columns = DEFAULT_COLUMNS.concat(config.columns);
     this.#model = config.model;
 
     for (const column of this.#columns) {
@@ -65,7 +70,7 @@ export class Schema<T> {
    * @returns {string} The name of the table.
    */
   get table(): string {
-    return this.#tableName;
+    return this.#table;
   }
 
   /**
